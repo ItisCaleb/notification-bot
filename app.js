@@ -6,7 +6,7 @@ const conf = require("./config")();
 const day = 1000 * 3600 * 24
 
 
-let config
+let config = conf.readConfig()
 let factions
 
 
@@ -68,15 +68,12 @@ function initTime(){
 
 
 function init(){
-    config = conf.readConfig()
     getFaction()
     fac.start();
     initTime()
     cron.schedule('* */1 * * *',async ()=>{
         initTime()
     },{timezone: "Asia/Taipei"}).start()
-    console.log(config)
-
 }
 
 
@@ -106,6 +103,6 @@ client.on('message', msg => {
     }
 });
 
-client.login('Nzc4Nzc4MzEwODY4MDc0NTA2.X7W70g.MkePSjqhk-P7alKSQxI2JoINh48').then(()=>{
+client.login(config.token).then(()=>{
     console.log('Login')
 });

@@ -3,7 +3,8 @@ module.exports = () => {
     if(!fs.existsSync("config.json")){
         fs.writeFileSync("config.json",JSON.stringify({
             time:[],
-            factionChannel:{}
+            factionChannel:{},
+            token:""
         },null,4))
     }
     function readConfig(){
