@@ -5,7 +5,7 @@ const day = 1000 * 3600 * 24
 module.exports = (client) =>{
     setTime(client)
     cron.schedule('* */1 * * *',async ()=>{
-        setTime()
+        setTime(client)
     },{timezone: "Asia/Taipei"}).start()
 }
 
