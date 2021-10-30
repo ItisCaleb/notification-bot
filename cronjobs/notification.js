@@ -1,7 +1,7 @@
 const cron = require('node-cron')
 const config = require("../config")()
 const day = 1000 * 3600 * 24
-
+const timeRegex = /^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}$/
 module.exports = (client) =>{
     setTime(client)
     cron.schedule('* */1 * * *',async ()=>{
@@ -10,6 +10,9 @@ module.exports = (client) =>{
 }
 
 function calTime(endTime, title){
+    if(timeRegex.test(endTime)){
+        endTime = Date.parse(endTime)
+    }else if(endTime !== Number) return
     let time = endTime - Date.now()
     let d = Math.floor(time/day)
     let h = Math.floor((time/day-d)*24)
