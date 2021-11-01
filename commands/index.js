@@ -7,6 +7,9 @@ module.exports = (msg) => {
         case "#stopf":
             floating_castle(commands,args,msg)
             break
+        case "#reload":
+            require("../config")()
+            break
         case "24":
             channel.send("25")
             break
