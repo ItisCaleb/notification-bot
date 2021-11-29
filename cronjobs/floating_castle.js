@@ -19,9 +19,10 @@ async function getFaction(client){
             cha.messages.fetch(config.getConfig().factionChannel[key])
                 .then(m=>{
                     m.edit(emb)
-                }).catch(()=>{
-                    delete config.getConfig().factionChannel[key]
-                    config.writeConfig()
+                }).catch((err)=>{
+                    console.log(err)
+                    //delete config.getConfig().factionChannel[key]
+                    //config.writeConfig()
                 })
         })
     }
