@@ -1,7 +1,7 @@
+const Discord = require("discord.js")
 const axios = require("axios")
 const cron = require('node-cron')
 const config = require("../config")()
-
 module.exports = (client) =>{
     getFaction(client)
     cron.schedule('*/2 * * * *',async ()=>{
